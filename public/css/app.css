@@ -244,3 +244,10 @@
   .parsley-type, .parsley-required, .parsley-equalto, .parsley-pattern, .parsley-length, .parsley-custom-error-message{
    color:#ff0000;
   }
+  .success_message {
+    max-width: 43%;
+    padding: 0 37px;
+    position: absolute;
+    top: 9%;
+    left: 9%;
+}

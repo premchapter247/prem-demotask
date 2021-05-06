@@ -13,9 +13,11 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+       // $this->middleware('auth');
     }
-
+    public function add_users(){
+        echo "Hello";
+    }
     /**
      * Show the application dashboard.
      *

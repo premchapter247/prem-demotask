@@ -24,10 +24,14 @@ Route::get('/create-post', [UserPostController::class, 'insert']);
 Route::get('/show-users', [UserPostController::class, 'show']);
 
 Route::get('/delete-user/{id}', [UserPostController::class, 'delete']);
-
 Route::get('/update-user/{id}', [UserPostController::class, 'update']);
 
 Route::get('/users-with-scope', [UserPostController::class, 'getUsersWithScope']);
 Route::get('/one-to-one-relationship-data/{id}', [UserPostController::class, 'oneToOneRelationShipData']);
 
+// Route::post('/users', [UserPostController::class, 'users']);
 
+Route::get('/add-users', function () {
+    return view('UserRegister');
+});
+Route::post('/user-insert', [UserPostController::class, 'user_signup']);

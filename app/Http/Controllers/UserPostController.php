@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Phone;
+use Session;
+
 
 class UserPostController extends Controller
 {
@@ -72,6 +74,36 @@ class UserPostController extends Controller
         echo "Inverse relationship data, Data from the User table ";    
         echo "<pre>";
         print_r($user);
+    }
+
+    function user_signup(Request $request ){
+        $validated = $request->validate([
+            'first_name' => 'required|min:1',
+            'last_name' => 'required|min:1',
+            'email' => 'required|unique:users',
+            'password' => 'required|confirmed|min:1',
+            'gender' => 'required',
+            'phone' => 'required|numeric',
+            'question' => 'required',
+            'answer' => 'required|min:1',
+        ]);
+        $dataForInsert = array(
+            'email' => $request->email,
+            'password' => $request->password,
+            'gender' => $request->gender,
+            'phone' => $request->phone,
+            'question' => $request->question,
+            'answer' => $request->answer,
+        );
+        $dataForInsert['name'] = $request->first_name.' '.$request->last_name;
+        $user = User::create($dataForInsert); 
+        if($user){
+            Session::flash('message', 'Data Inserted Successfully.'); 
+            Session::flash('alert-class', 'alert-danger'); 
+            Redirect::to('/add-users');
+            //$data['success_msg'] = "Data Inserted Successfully";
+        }
+       return view('UserRegister');
     }
 
 }
