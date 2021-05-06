@@ -100,7 +100,7 @@ class UserPostController extends Controller
         if($user){
             Session::flash('message', 'Data Inserted Successfully.'); 
             Session::flash('alert-class', 'alert-danger'); 
-            Redirect::to('/add-users');
+            // Redirect::to('/add-users');
             //$data['success_msg'] = "Data Inserted Successfully";
         }
        return view('UserRegister');
